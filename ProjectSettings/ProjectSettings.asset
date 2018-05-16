@@ -7,11 +7,11 @@ PlayerSettings:
   productGUID: eb9f47cc5fb1ff1429f00d09c9ddd61f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 2
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: com.OV.DAM
   productName: Matrioshka
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
