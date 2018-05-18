@@ -5,8 +5,6 @@ using UnityEngine;
 public class Move : MonoBehaviour {
 
     public float tiempo = 2.0f;
-    public float vel = 5;
-    public float posInicial = 0;
     // Use this for initialization
     void Start () {
 		
@@ -31,13 +29,46 @@ public class Move : MonoBehaviour {
 
     public void movimiento()
     {
-
-        if (GameObject.FindGameObjectWithTag("Enemigo"))
+        if (this.tag.Equals("BLUE_Babuska"))
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("Enemigo").transform.position, 0.1f);
+            if (GameObject.FindGameObjectWithTag("RED_Babuska"))
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("RED_Babuska").transform.position, 0.1f);
+
+            }else if (GameObject.FindGameObjectWithTag("RED_Trovo"))
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("RED_Trovo").transform.position, 0.1f);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
+
+            }
+        }
+        else
+        {
+            if (GameObject.FindGameObjectWithTag("BLUE_Babuska"))
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position, 0.1f);
+
+            }
+            else if (GameObject.FindGameObjectWithTag("BLUE_trovo"))
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("BLUE_trovo").transform.position, 0.1f);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+
+            }
+
 
         }
-        
     }
 }
