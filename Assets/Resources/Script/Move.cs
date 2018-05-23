@@ -24,7 +24,6 @@ public class Move : MonoBehaviour {
         {
             tiempo = 3.0f;
         }
-
     }
 
     public void movimiento()
@@ -70,5 +69,6 @@ public class Move : MonoBehaviour {
 
 
         }
+        
     }
 }

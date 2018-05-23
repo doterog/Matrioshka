@@ -3,19 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class vidaMuñeco : MonoBehaviour {
-    public int vida = 1;
+    public int vida = 60;
+    public Rigidbody2D rigid;
     void Update()
     {
-        if (this.transform.position.y <= -100)
-        {
-            Destroy(this.gameObject);
-        }
+        this.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
-    private void OnCollisionEnter(Collision collision)
+
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.tag.Equals("BLUE_Babuska"))
-        {
-            if (GameObject.FindGameObjectWithTag("RED_Babuska"))
+        enableRigidBody();
+
+            if (collision.gameObject.tag == "RED_Babuska")
+            {
+                vida--;
+                if (vida == 0)
+                {
+                    
+                    Destroy(this.gameObject);
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    enableRigidBody();
+                }
+            }
+            if (collision.gameObject.tag == "BLUE_Babuska")
             {
                 vida--;
                 if (vida == 0)
@@ -23,19 +37,27 @@ public class vidaMuñeco : MonoBehaviour {
                     Destroy(this.gameObject);
                     Destroy(collision.gameObject);
                 }
-            }
+                else
+                {
+                    enableRigidBody();
+                }
+        }
+        
+    }
+
+    void enableRigidBody()
+    {
+        if (rigid.isKinematic)
+        {
+            rigid.isKinematic = false;
+            rigid.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+            this.transform.position = -Vector3.MoveTowards(transform.position,
+                    GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position, 0.1f);
         }
         else
         {
-            if (GameObject.FindGameObjectWithTag("BLUE_Babuska"))
-            {
-                vida--;
-                if (vida == 0)
-                {
-                    Destroy(this.gameObject);
-                    Destroy(collision.gameObject);
-                }
-            }
+            rigid.isKinematic = true;
+            rigid.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
     }
 }
