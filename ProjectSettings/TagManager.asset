@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemigo
+  - BLUE_Babuska
+  - RED_Babuska
+  - MatrioshkaRed
+  - Matrioshkablue
+  - RED_Trovo
+  - BLUE_Trovo
   layers:
   - Default
   - TransparentFX
