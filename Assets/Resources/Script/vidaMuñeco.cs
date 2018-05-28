@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class vidaMuñeco : MonoBehaviour {
-    public int vida = 60;
+    int vida = 60;
     public Rigidbody2D rigid;
     void Update()
     {

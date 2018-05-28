@@ -10,6 +10,7 @@ TagManager:
   - Matrioshkablue
   - RED_Trovo
   - BLUE_Trovo
+  - variables
   layers:
   - Default
   - TransparentFX

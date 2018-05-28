@@ -20,10 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4601087100481156}
   - component: {fileID: 212888753816000968}
-  - component: {fileID: 114110614258843666}
   - component: {fileID: 50082107427885128}
+  - component: {fileID: 114766155277655970}
+  - component: {fileID: 114563637102193742}
   m_Layer: 0
-  m_Name: MatrioshkaBlue
+  m_Name: BLUE_Matrioshka
   m_TagString: Matrioshkablue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +63,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &114110614258843666
+--- !u!114 &114563637102193742
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,17 +71,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1850868801834846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecdf3bc1ca5ba544b801092b6e115899, type: 3}
+  m_Script: {fileID: 11500000, guid: 3364807be2ccbd643a6ee5af4f161529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Red_babuska: {fileID: 1431668796095174, guid: d7589d62fc6f99f499edb60b92b8faa9,
-    type: 2}
+  rigid: {fileID: 0}
+--- !u!114 &114766155277655970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850868801834846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2166b5280270ecd4d8915bb3b5952666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Blue_babuska: {fileID: 1290880169196096, guid: 98beae98c3332de4bbe3e47f45d677e3,
     type: 2}
-  totalBabuska: 0
+  totalBabuskaActual: 0
   maxBabuska: 10
   tiempospawn: 5
   tiempo: 5
+  text: {fileID: 0}
 --- !u!212 &212888753816000968
 SpriteRenderer:
   m_ObjectHideFlags: 1

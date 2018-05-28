@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4472903955046398}
   - component: {fileID: 212945774159219292}
-  - component: {fileID: 114237311729057744}
-  - component: {fileID: 114626902260467350}
   - component: {fileID: 61626983902721770}
   - component: {fileID: 50798617878375804}
+  - component: {fileID: 114453846912784548}
+  - component: {fileID: 114527102672041238}
   m_Layer: 0
   m_Name: BLUE_Babuska
   m_TagString: BLUE_Babuska
@@ -89,7 +89,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56, y: 1.55}
   m_EdgeRadius: 0
---- !u!114 &114237311729057744
+--- !u!114 &114453846912784548
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,22 +97,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290880169196096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86c1f7beb050f74b8e52fb4c9f08ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ec215bed35dbf44280cce7a5c01538f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 0
+  rigid: {fileID: 50798617878375804}
+--- !u!114 &114527102672041238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290880169196096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac1ac7516ce44f4ea753789967d8230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tiempo: 2
---- !u!114 &114626902260467350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1290880169196096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42bac96b61e2a964391503b5ed95c97e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vida: 60
+  text: {fileID: 0}
 --- !u!212 &212945774159219292
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,14 +5,17 @@ using UnityEngine;
 public class spawnRed : MonoBehaviour {
 
     public GameObject Red_babuska;
-    public int totalBabuska = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().totalBabuska;
-    public int maxBabuska = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().maxBabuska;
+    public int totalBabuskaActual;
+    public int maxBabuska;
     public float tiempospawn = 5.0f;
     public float tiempo = 5f;
+    public UnityEngine.UI.Text text;
 
     // Use this for initialization
     void Start()
     {
+        maxBabuska = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().maxBabuska;
+        totalBabuskaActual = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().totalBabuska;
         tiempo = tiempospawn;
 
     }
@@ -20,7 +23,10 @@ public class spawnRed : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (totalBabuska != maxBabuska)
+        totalBabuskaActual = GameObject.FindGameObjectsWithTag("RED_Babuska").Length;
+        text.text = "total red: " + totalBabuskaActual + " / " + maxBabuska;
+        
+        if (totalBabuskaActual != maxBabuska)
         {
 
             tiempo = tiempo - 1 * Time.deltaTime;
@@ -37,9 +43,7 @@ public class spawnRed : MonoBehaviour {
     {
 
         GameObject Redbabuska = Instantiate(Red_babuska, transform.position, transform.rotation) as GameObject;
-        Redbabuska.name = "Red_" + totalBabuska;
-
-        totalBabuska++;
+        Redbabuska.name = "Red_" + totalBabuskaActual;
         tiempo = tiempospawn;
     }
 }

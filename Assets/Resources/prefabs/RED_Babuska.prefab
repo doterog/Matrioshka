@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4193566632929672}
   - component: {fileID: 212683268986220780}
-  - component: {fileID: 114698508741588154}
-  - component: {fileID: 114443887003383424}
   - component: {fileID: 61937405569480016}
   - component: {fileID: 50389913990333804}
+  - component: {fileID: 114424176177318142}
+  - component: {fileID: 114886337028190756}
   m_Layer: 0
   m_Name: RED_Babuska
   m_TagString: RED_Babuska
@@ -89,7 +89,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56, y: 1.55}
   m_EdgeRadius: 0
---- !u!114 &114443887003383424
+--- !u!114 &114424176177318142
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,11 +97,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431668796095174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42bac96b61e2a964391503b5ed95c97e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ec215bed35dbf44280cce7a5c01538f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 60
---- !u!114 &114698508741588154
+  vida: 0
+  rigid: {fileID: 50389913990333804}
+--- !u!114 &114886337028190756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,10 +110,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431668796095174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86c1f7beb050f74b8e52fb4c9f08ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac1ac7516ce44f4ea753789967d8230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tiempo: 2
+  text: {fileID: 0}
 --- !u!212 &212683268986220780
 SpriteRenderer:
   m_ObjectHideFlags: 1
