@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Light : MonoBehaviour
 {
-    private bool state = false;
+    public bool state = false;
 
 
     // Use this for initialization
