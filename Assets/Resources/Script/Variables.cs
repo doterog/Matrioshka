@@ -13,6 +13,7 @@ public class Variables : MonoBehaviour {
     //Variables relacionados con el movimiento y posicion
     public float detectarEnemigo = 1;
     public float detectarRuina = 1;
+    public float detectarMatrioskaAliada = 1;
 
 
 }

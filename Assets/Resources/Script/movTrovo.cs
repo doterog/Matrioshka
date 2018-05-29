@@ -6,12 +6,14 @@ public class movTrovo : MonoBehaviour {
 
     public float tiempo = 2.0f;
     float detectarRuina;
+    float detectarMatrioskaAliada;
     public UnityEngine.UI.Text text;
     bool Build;
     // Use this for initialization
     void Start()
     {
         detectarRuina = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarRuina;
+        detectarMatrioskaAliada = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarMatrioskaAliada;
         Build = false;
     }
 
@@ -64,7 +66,6 @@ public class movTrovo : MonoBehaviour {
                 Build = true;
             }
         }
-        text.text = "D-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("Ruin").transform.position.x, 2) + "/D-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("Ruin").transform.position.y, 2);
         if (Build)
         {
             GoBuild();
@@ -81,14 +82,52 @@ public class movTrovo : MonoBehaviour {
     {
         if (this.CompareTag("BLUE_Trovo"))
         {
-            transform.position = Vector3.MoveTowards(transform.position,
+            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x)
+            {
+                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
+                {
+                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) >= detectarMatrioskaAliada &&
+                    (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) >= detectarMatrioskaAliada)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position,
                 GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+                    }
+                }
+                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) >= detectarMatrioskaAliada &&
+                   (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+                }
+            }
+            else
+            {
+                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
+                {
+                    if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
+                    (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) >= detectarMatrioskaAliada)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+                    }
+                }
+                else if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
+                  (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+                }
+            }
+            text.text = "D-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x, 2) + "/D-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y, 2);
+
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position,
                 GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
+            text.text = "D-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x, 2) + "/D-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y, 2);
         }
+
     }
 
     void GoBuild()
