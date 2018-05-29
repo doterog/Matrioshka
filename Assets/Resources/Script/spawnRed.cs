@@ -44,6 +44,8 @@ public class spawnRed : MonoBehaviour {
 
         GameObject Redbabuska = Instantiate(Red_babuska, transform.position, transform.rotation) as GameObject;
         Redbabuska.name = "Red_" + totalBabuskaActual;
+
+        totalBabuskaActual++;
         tiempo = tiempospawn;
     }
 }

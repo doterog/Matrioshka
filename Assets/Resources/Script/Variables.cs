@@ -14,6 +14,7 @@ public class Variables : MonoBehaviour {
     public float detectarEnemigo = 1;
     public float detectarRuina = 1;
     public float detectarMatrioskaAliada = 1;
-
+    //Variables bool que dicen qual esta seleccionado o no;
+    public bool boolMatrio = false, boolTrovo = false, boolBabus = false, boolRuin = false;
 
 }

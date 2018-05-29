@@ -40,9 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4468754822538176}
   - component: {fileID: 212820091704733200}
-  - component: {fileID: 70950455524785866}
-  - component: {fileID: 50353198377562022}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: HilightTrovo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,26 +74,6 @@ Transform:
   m_Father: {fileID: 4140270834071558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50353198377562022
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1311938343757374}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!50 &50988871266821000
 Rigidbody2D:
   serializedVersion: 4
@@ -130,21 +108,6 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.85, y: 1.18}
-  m_Direction: 0
---- !u!70 &70950455524785866
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1311938343757374}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.93, y: 1.26}
   m_Direction: 0
 --- !u!114 &114400970668478808
 MonoBehaviour:

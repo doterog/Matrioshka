@@ -29,35 +29,90 @@ public class Light : MonoBehaviour
                     {
                         state = false;
                         light.SetActive(false);
-                    }
-                    else
-                    {
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolTrovo=false;
+                }
+                else
+                {
                         state = true;
                         light.SetActive(true);
-                    }
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolTrovo = true;
+                }
             }
 
         }
-        /*
-                    Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                    bool overSprite = this.GetComponent<SpriteRenderer>().bounds.Contains(touchPosition);
 
-                    if (overSprite)
-                    {
-                        if (state)
-                        {
-                            state = false;
-                            light.SetActive(false);
-                        }
-                        else
-                        {
-                            state = true;
-                            light.SetActive(true);
-                        }
-                    }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
+            GameObject sprite = GameObject.FindGameObjectWithTag("MatrioshkaRed");
+            if (sprite.GetComponent<SpriteRenderer>().bounds.Contains(touchPosition))
+            {
+                GameObject light = GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.Find("LightMatrio").gameObject;
+                if (state)
+                {
+                    state = false;
+                    light.SetActive(false);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolMatrio = false;
                 }
-                */
+                else
+                {
+                    state = true;
+                    light.SetActive(true);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolMatrio = true;
+                }
+            }
+
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+            GameObject sprite = GameObject.FindGameObjectWithTag("RED_Babuska");
+            if (sprite.GetComponent<SpriteRenderer>().bounds.Contains(touchPosition))
+            {
+                GameObject light = GameObject.FindGameObjectWithTag("RED_Babuska").transform.Find("LightBabuska").gameObject;
+                if (state)
+                {
+                    state = false;
+                    light.SetActive(false);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolBabus = false;
+                }
+                else
+                {
+                    state = true;
+                    light.SetActive(true);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolBabus = true;
+                }
+            }
+
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+            GameObject sprite = GameObject.FindGameObjectWithTag("Ruin");
+            if (sprite.GetComponent<SpriteRenderer>().bounds.Contains(touchPosition))
+            {
+                GameObject light = GameObject.FindGameObjectWithTag("Ruin").transform.Find("LightE_RUINS").gameObject;
+                if (state)
+                {
+                    state = false;
+                    light.SetActive(false);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolRuin = false;
+                }
+                else
+                {
+                    state = true;
+                    light.SetActive(true);
+                    GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolRuin = true;
+                }
+            }
+
+        }
+
     }
 
 

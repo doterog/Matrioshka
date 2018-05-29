@@ -51,7 +51,7 @@ public class movBabuska : MonoBehaviour {
                     GoBattleBlue();
                 }
             }
-            else
+            else if (this.transform.position.x < GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x)
             {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y)
                 {
@@ -66,6 +66,10 @@ public class movBabuska : MonoBehaviour {
                 {
                     GoBattleBlue();
                 }
+            }
+            else
+            {
+                GoWhitMatrioshka();
             }
             
         }
@@ -88,7 +92,7 @@ public class movBabuska : MonoBehaviour {
                     GoBattleRed();
                 }
             }
-            else
+            else if (this.transform.position.x < GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
             {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
                 {
@@ -104,8 +108,25 @@ public class movBabuska : MonoBehaviour {
                     GoBattleRed();
                 }
             }
-            //text.text = "Dist-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x, 2) + "/Dist-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y, 2) + "Dist" + detectarEnemigo;
+            else
+            {
+                GoWhitMatrioshka();
+            }
+        }
 
+    }
+
+    void GoWhitMatrioshka()
+    {
+        if (this.CompareTag("BLUE_Babuska"))
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+                 GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
         }
 
     }
