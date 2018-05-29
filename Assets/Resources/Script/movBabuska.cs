@@ -34,18 +34,18 @@ public class movBabuska : MonoBehaviour {
         //Comprobación en caso de que el babuska se encuentre a cierto rango del enemigo
         if (this.tag.Equals("BLUE_Babuska"))
         {
-            if(this.transform.position.x>= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x)
+            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x)
             {
-                if(this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y)
+                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y)
                 {
-                    
-                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo ||
+
+                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y) <= detectarEnemigo)
                     {
                         GoBattleBlue();
                     }
                 }
-                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo ||
+                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo &&
                    (GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
                     GoBattleBlue();
@@ -55,24 +55,20 @@ public class movBabuska : MonoBehaviour {
             {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y)
                 {
-                    if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo ||
+                    if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y) <= detectarEnemigo)
                     {
                         GoBattleBlue();
                     }
                 }
-                else if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo ||
+                else if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                   (GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
                     GoBattleBlue();
                 }
             }
-            //text.text = "Dist-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x,2)+ "/Dist-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y, 2);
             
         }
-
-
-
         else
         {
             if (this.transform.position.x >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
@@ -80,13 +76,13 @@ public class movBabuska : MonoBehaviour {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
                 {
 
-                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo ||
+                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
                     {
                         GoBattleRed();
                     }
                 }
-                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo ||
+                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
                    (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
                     GoBattleRed();
@@ -96,19 +92,19 @@ public class movBabuska : MonoBehaviour {
             {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
                 {
-                    if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo ||
+                    if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
                     {
                         GoBattleRed();
                     }
                 }
-                else if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo ||
+                else if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                   (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
                     GoBattleRed();
                 }
             }
-            //text.text = "Dist-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x, 2) + "/Dist-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y, 2);
+            //text.text = "Dist-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x, 2) + "/Dist-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y, 2) + "Dist" + detectarEnemigo;
 
         }
 

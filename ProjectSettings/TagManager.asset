@@ -11,6 +11,7 @@ TagManager:
   - RED_Trovo
   - BLUE_Trovo
   - variables
+  - Ruin
   layers:
   - Default
   - TransparentFX

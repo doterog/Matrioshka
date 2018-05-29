@@ -12,6 +12,7 @@ public class Variables : MonoBehaviour {
                maxBabuska = 10;
     //Variables relacionados con el movimiento y posicion
     public float detectarEnemigo = 1;
+    public float detectarRuina = 1;
 
 
 }
