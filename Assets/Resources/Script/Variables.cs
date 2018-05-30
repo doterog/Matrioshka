@@ -15,6 +15,13 @@ public class Variables : MonoBehaviour {
     public float detectarRuina = 1;
     public float detectarMatrioskaAliada = 1;
     //Variables bool que dicen qual esta seleccionado o no;
-    public bool boolMatrio = false, boolTrovo = false, boolBabus = false, boolRuin = false;
+    public  bool[] selected = new bool[4];
+    // 0 = Matrioshka
+    // 1 = Babushka
+    // 2 = Trovo
+    // 3 = E_Ruins
+    public  string[] tag_units = { "RED_Matrioshka", "RED_Babuska", "RED_Trovo" };
+    public  string[] tag_highlight = { "L_Matrioshka", "L_Babuska", "L_Trovo" };
+    public Sprite[] highlight_sprite = new Sprite[3];
 
 }

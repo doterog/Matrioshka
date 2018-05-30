@@ -12,6 +12,10 @@ TagManager:
   - BLUE_Trovo
   - variables
   - Ruin
+  - L_Matrioshka
+  - RED_Matrioshka
+  - L_Trovo
+  - L_Babuska
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class movMatrioska : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolMatrio)
+        if (GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().selected[0])
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {

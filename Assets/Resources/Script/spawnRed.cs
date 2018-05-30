@@ -24,7 +24,7 @@ public class spawnRed : MonoBehaviour {
     void Update()
     {
         totalBabuskaActual = GameObject.FindGameObjectsWithTag("RED_Babuska").Length;
-        text.text = "total red: " + totalBabuskaActual + " / " + maxBabuska;
+        //text.text = "total red: " + totalBabuskaActual + " / " + maxBabuska;
         
         if (totalBabuskaActual != maxBabuska)
         {
