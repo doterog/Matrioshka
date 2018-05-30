@@ -41,6 +41,9 @@ public class Light : MonoBehaviour
 
         }
 
+
+
+
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);

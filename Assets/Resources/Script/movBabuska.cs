@@ -5,7 +5,6 @@ using UnityEngine;
 public class movBabuska : MonoBehaviour {
     public float tiempo = 2.0f;
     float detectarEnemigo;
-    public UnityEngine.UI.Text text;
     // Use this for initialization
     void Start()
     {
@@ -14,7 +13,6 @@ public class movBabuska : MonoBehaviour {
 
     void Update()
     {
-        
 
         tiempo = tiempo - 1 * Time.deltaTime;
 
@@ -34,6 +32,20 @@ public class movBabuska : MonoBehaviour {
         //Comprobación en caso de que el babuska se encuentre a cierto rango del enemigo
         if (this.tag.Equals("BLUE_Babuska"))
         {
+            BlueResearchBabuska();
+        }
+        else
+        {
+            RedResearchBabuska();
+        }
+
+    }
+
+    //Detectar objetivos Blue
+    public void BlueResearchBabuska()
+    {
+        try
+        {
             if (this.transform.position.x >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x)
             {
                 if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y)
@@ -42,13 +54,13 @@ public class movBabuska : MonoBehaviour {
                     if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y) <= detectarEnemigo)
                     {
-                        GoBattleBlue();
+                        GoBattleBlueBabuska();
                     }
                 }
                 else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x) <= detectarEnemigo &&
                    (GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
-                    GoBattleBlue();
+                    GoBattleBlueBabuska();
                 }
             }
             else if (this.transform.position.x < GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x)
@@ -58,114 +70,287 @@ public class movBabuska : MonoBehaviour {
                     if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                     (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y) <= detectarEnemigo)
                     {
-                        GoBattleBlue();
+                        GoBattleBlueBabuska();
                     }
                 }
                 else if ((GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
                   (GameObject.FindGameObjectWithTag("RED_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
                 {
-                    GoBattleBlue();
+                    GoBattleBlueBabuska();
                 }
             }
             else
             {
-                GoWhitMatrioshka();
+                BlueResearchTrovo();
             }
-            
         }
-        else
+        catch
         {
-            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
-                {
-
-                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
-                    {
-                        GoBattleRed();
-                    }
-                }
-                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
-                   (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
-                {
-                    GoBattleRed();
-                }
-            }
-            else if (this.transform.position.x < GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
-                {
-                    if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
-                    {
-                        GoBattleRed();
-                    }
-                }
-                else if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
-                  (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
-                {
-                    GoBattleRed();
-                }
-            }
-            else
-            {
-                GoWhitMatrioshka();
-            }
+            BlueResearchTrovo();
         }
 
     }
 
-    void GoWhitMatrioshka()
+    public void BlueResearchTrovo()
     {
-        if (this.CompareTag("BLUE_Babuska"))
+        try
         {
-            transform.position = Vector3.MoveTowards(transform.position,
+            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x)
+            {
+                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y)
+                {
+
+                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x) <= detectarEnemigo &&
+                    (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y) <= detectarEnemigo)
+                    {
+                        GoBattleBlueTrovo();
+                    }
+                }
+                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x) <= detectarEnemigo &&
+                   (GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleBlueTrovo();
+                }
+            }
+            else if (this.transform.position.x < GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x)
+            {
+                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y)
+                {
+                    if ((GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                    (this.transform.position.y - GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y) <= detectarEnemigo)
+                    {
+                        GoBattleBlueTrovo();
+                    }
+                }
+                else if ((GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                  (GameObject.FindGameObjectWithTag("RED_Trovo").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleBlueTrovo();
+                }
+            }
+            else
+            {
+                BlueResearchMatrio();
+            }
+        }
+        catch
+        {
+            BlueResearchMatrio();
+        }
+        
+    }
+
+    public void BlueResearchMatrio()
+    {
+        if (this.transform.position.x >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleBlueMatrio();
+                }
+            }
+            else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x) <= detectarEnemigo &&
+               (GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleBlueMatrio();
+            }
+        }
+        else if (this.transform.position.x < GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y)
+            {
+                if ((GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleBlueMatrio();
+                }
+            }
+            else if ((GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+              (GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleBlueMatrio();
+            }
+        }
+        else
+        {
+            GoWhitBlueMatrioshka();
+        }
+    }
+
+    //Movimiento Blue
+    public void GoWhitBlueMatrioshka()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
                  GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
-        }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
-        }
-
     }
 
-    public void GoBattleBlue()
+    public void GoBattleBlueBabuska()
     {
-        if (GameObject.FindGameObjectWithTag("RED_Babuska"))
-        {
-            transform.position = Vector3.MoveTowards(transform.position,
+        transform.position = Vector3.MoveTowards(transform.position,
             GameObject.FindGameObjectWithTag("RED_Babuska").transform.position, 0.1f);
-        }
-        else if (GameObject.FindGameObjectWithTag("RED_Trovo"))
-        {
-            transform.position = Vector3.MoveTowards(transform.position,
+    }
+
+    public void GoBattleBlueTrovo()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
             GameObject.FindGameObjectWithTag("RED_Trovo").transform.position, 0.1f);
+    }
+
+    public void GoBattleBlueMatrio()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
+    }
+
+    //Detectar objetivos Red
+    public void RedResearchBabuska()
+    {
+        if (this.transform.position.x >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedBabuska();
+                }
+            }
+            else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x) <= detectarEnemigo &&
+               (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedBabuska();
+            }
+        }
+        else if (this.transform.position.x < GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y)
+            {
+                if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedBabuska();
+                }
+            }
+            else if ((GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+              (GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedBabuska();
+            }
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
+            RedResearchTrovo();
         }
     }
 
-    public void GoBattleRed()
+    public void RedResearchTrovo()
     {
-        if (GameObject.FindGameObjectWithTag("BLUE_Babuska"))
+        if (this.transform.position.x >= GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x)
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position, 0.1f);
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedTrovo();
+                }
+            }
+            else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x) <= detectarEnemigo &&
+               (GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedTrovo();
+            }
         }
-        else if (GameObject.FindGameObjectWithTag("BLUE_trovo"))
+        else if (this.transform.position.x < GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x)
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("BLUE_trovo").transform.position, 0.1f);
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y)
+            {
+                if ((GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedTrovo();
+                }
+            }
+            else if ((GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+              (GameObject.FindGameObjectWithTag("BLUE_Trovo").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedTrovo();
+            }
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
+            RedResearchMatrio();
         }
+    }
+
+    public void RedResearchMatrio()
+    {
+        if (this.transform.position.x >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedMatrio();
+                }
+            }
+            else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) <= detectarEnemigo &&
+               (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedMatrio();
+            }
+        }
+        else if (this.transform.position.x < GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
+            {
+                if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+                (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) <= detectarEnemigo)
+                {
+                    GoBattleRedMatrio();
+                }
+            }
+            else if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) <= detectarEnemigo &&
+              (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) <= detectarEnemigo)
+            {
+                GoBattleRedMatrio();
+            }
+        }
+        else
+        {
+            GoWhitBlueMatrioshka();
+        }
+    }
+
+    //Movimiento Red
+    public void GoWhitRedMatrioshka()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
+                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
+    }
+    public void GoBattleRedBabuska()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.FindGameObjectWithTag("BLUE_Babuska").transform.position, 0.1f);
+    }
+
+    public void GoBattleRedTrovo()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.FindGameObjectWithTag("BLUE_trovo").transform.position, 0.1f);
+    }
+
+    public void GoBattleRedMatrio()
+    {
+        transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
     }
 }

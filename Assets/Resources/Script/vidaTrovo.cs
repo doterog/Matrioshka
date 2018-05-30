@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class vidaTrovo : MonoBehaviour {
-    int vida;
+    public int vida;
     public Rigidbody2D rigid;
     void Start()
     {
@@ -19,35 +19,40 @@ public class vidaTrovo : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         enableRigidBody();
-
-        if (collision.gameObject.tag == "RED_Babuska")
+        if (this.gameObject.tag == "BLUE_Trovo")
         {
-            vida--;
-            if (vida == 0)
+            if (collision.gameObject.tag == "RED_Babuska")
             {
+                vida--;
+                if (vida == 0)
+                {
 
-                Destroy(this.gameObject);
-                Destroy(collision.gameObject);
-            }
-            else
-            {
-                enableRigidBody();
+                    Destroy(this.gameObject);
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    enableRigidBody();
+                }
             }
         }
-        if (collision.gameObject.tag == "BLUE_Babuska")
+        else
         {
-            vida--;
-            if (vida == 0)
+            if (collision.gameObject.tag == "BLUE_Babuska")
             {
-                Destroy(this.gameObject);
-                Destroy(collision.gameObject);
+                vida--;
+                if (vida == 0)
+                {
+                    Destroy(this.gameObject);
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    enableRigidBody();
+                }
             }
-            else
-            {
-                enableRigidBody();
-            }
-        }
 
+        }
     }
 
     void enableRigidBody()

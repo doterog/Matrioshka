@@ -21,6 +21,12 @@ public class ManagerOnOff : MonoBehaviour
         {
             but.image.sprite = OnSprite;
             On_Off = true;
+            GameObject light = GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.Find("LightMatrio").gameObject;
+            {
+                GameObject.Find("Main Camera").GetComponent<Light>().state = true;
+                light.SetActive(true);
+                GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().boolMatrio = true;
+            }
         }
     }
 

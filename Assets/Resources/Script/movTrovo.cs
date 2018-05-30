@@ -5,9 +5,9 @@ using UnityEngine;
 public class movTrovo : MonoBehaviour {
 
     public float tiempo = 2.0f;
+    public float totalTime = 0;
     float detectarRuina;
     float detectarMatrioskaAliada;
-    public UnityEngine.UI.Text text;
     bool Build;
     // Use this for initialization
     void Start()
@@ -23,7 +23,7 @@ public class movTrovo : MonoBehaviour {
 
         if (tiempo >= 2.0f)
         {
-            Move();
+            MoveToRuin();
         }
 
         if (tiempo <= 0)
@@ -31,7 +31,8 @@ public class movTrovo : MonoBehaviour {
             tiempo = 3.0f;
         }
     }
-    void Move()
+
+    void MoveToRuin()
     {
         if (this.transform.position.x >= GameObject.FindGameObjectWithTag("Ruin").transform.position.x)
         {
@@ -118,8 +119,6 @@ public class movTrovo : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
                 }
             }
-            text.text = "D-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x, 2) + "/D-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y, 2);
-
         }
         else
         {
@@ -159,7 +158,6 @@ public class movTrovo : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
                 }
             }
-            text.text = "D-x: " + System.Math.Round(this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x, 2) + "/D-y: " + System.Math.Round(this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y, 2);
         }
 
     }
