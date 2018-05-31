@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camara_Desplazamiento : MonoBehaviour
+public class Drag_Camera : MonoBehaviour
 {
 
     public GameObject camera_GameObject;
@@ -22,7 +22,7 @@ public class Camara_Desplazamiento : MonoBehaviour
             {
                 Vector2 NewPosition = GetWorldPosition();
                 Vector2 PositionDifference = NewPosition - StartPosition;
-                camera_GameObject.transform.Translate(-PositionDifference);
+                this.transform.Translate(-PositionDifference);
             }
             StartPosition = GetWorldPosition();
         }
@@ -30,11 +30,11 @@ public class Camara_Desplazamiento : MonoBehaviour
 
     Vector2 GetWorldPosition()
     {
-        return camera_GameObject.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        return this.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
     }
 
     Vector2 GetWorldPositionOfFinger(int FingerIndex)
     {
-        return camera_GameObject.GetComponent<Camera>().ScreenToWorldPoint(Input.GetTouch(FingerIndex).position);
+        return this.GetComponent<Camera>().ScreenToWorldPoint(Input.GetTouch(FingerIndex).position);
     }
 }

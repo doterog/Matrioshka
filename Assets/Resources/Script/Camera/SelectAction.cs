@@ -91,6 +91,8 @@ public class SelectAction : MonoBehaviour
                         }
                     }
                 }
+
+                Deselect_Others(-1);
             }
           
             touch = false;
