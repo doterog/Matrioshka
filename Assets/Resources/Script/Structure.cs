@@ -22,19 +22,51 @@ public class Structure : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "RED_Babuska")
+        if (collision.gameObject.tag == "RED_Trovo")
         {
-            
-            DestroyObject(this);
-            GameObject Red_Ruin = Instantiate(RedRuin, positionInitial, transform.rotation) as GameObject;
-            Red_Ruin.name = "Red_Ruin";
+            if (this.name == ("E_RUINS_1"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinRed[0] = true;
+            }
+
+            if (this.name == ("E_RUINS_2"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinRed[1] = true;
+            }
+
+            if (this.name == ("E_RUINS_3"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinRed[2] = true;
+            }
+
+            if (this.name == ("E_RUINS_4"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinRed[3] = true;
+            }
+
         }
 
-        if (collision.gameObject.tag == "BLUE_Babuska")
+        if (collision.gameObject.tag == "BLUE_Trovo")
         {
-            DestroyObject(this);
-            GameObject Blue_Ruin = Instantiate(BlueRuin, positionInitial, transform.rotation) as GameObject;
-            Blue_Ruin.name = "Blue_Ruin";
+            if (this.name == ("E_RUINS_1"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinBlue[0] = true;
+            }
+
+            if (this.name == ("E_RUINS_2"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinBlue[1] = true;
+            }
+
+            if (this.name == ("E_RUINS_3"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinBlue[2] = true;
+            }
+
+            if (this.name == ("E_RUINS_4"))
+            {
+                GameObject.Find("VariablesGlobales").GetComponent<Variables>().colorRuinBlue[3] = true;
+            }
         }
     }
 }

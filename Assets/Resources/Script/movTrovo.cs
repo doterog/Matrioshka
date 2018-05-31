@@ -4,167 +4,349 @@ using UnityEngine;
 
 public class movTrovo : MonoBehaviour {
 
-    public float tiempo = 2.0f;
+    public float time = 2.0f;
     public float totalTime = 0;
-    float detectarRuina;
-    float detectarMatrioskaAliada;
+    float detectRuin;
+    float detectMatrioskaAliad;
     bool Build;
     // Use this for initialization
     void Start()
     {
-        detectarRuina = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarRuina;
-        detectarMatrioskaAliada = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarMatrioskaAliada;
+        detectRuin = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarRuina;
+        detectMatrioskaAliad = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().detectarMatrioskaAliada;
         Build = false;
     }
 
     void Update()
     {
-        tiempo = tiempo - 1 * Time.deltaTime;
+        time = time - 1 * Time.deltaTime;
 
-        if (tiempo >= 2.0f)
+        if (time >= 2.0f)
         {
-            MoveToRuin();
+            if (this.CompareTag("BLUE_Trovo"))
+            {
+                DetectRuinBlue1();
+            }else
+            {
+                DetectRuinRed1();
+            }
         }
 
-        if (tiempo <= 0)
+        if (time <= 0)
         {
-            tiempo = 3.0f;
+            time = 3.0f;
         }
     }
 
-    void MoveToRuin()
+    void DetectRuinBlue1()
     {
-        if (this.transform.position.x >= GameObject.FindGameObjectWithTag("Ruin").transform.position.x)
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinBlue[0])
         {
-            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Ruin").transform.position.y)
+            DetectRuin1();
+        }
+        else
+        {
+            DetectRuin2();
+        }
+
+    }
+    void DetectRuinRed1()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinRed[0])
+        {
+            DetectRuin1();
+        }
+        else
+        {
+            DetectRuin2();
+        }
+
+    }
+    void DetectRuin1()
+    {
+        if (this.transform.position.x >= GameObject.Find("E_RUINS_1").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_1").transform.position.y)
             {
 
-                if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Ruin").transform.position.x) <= detectarRuina &&
-                (this.transform.position.y - GameObject.FindGameObjectWithTag("Ruin").transform.position.y) <= detectarRuina)
+                if ((this.transform.position.x - GameObject.Find("E_RUINS_1").transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_1").transform.position.y) <= detectRuin)
                 {
-                    Build =true;
+                    Build = true;
                 }
             }
-            else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Ruin").transform.position.x) <= detectarRuina &&
-               (GameObject.FindGameObjectWithTag("Ruin").transform.position.y - this.transform.position.y) <= detectarRuina)
+            else if ((this.transform.position.x - GameObject.Find("E_RUINS_1").transform.position.x) <= detectRuin &&
+               (GameObject.Find("E_RUINS_1").transform.position.y - this.transform.position.y) <= detectRuin)
             {
                 Build = true;
             }
         }
         else
         {
-            if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Ruin").transform.position.y)
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_1").transform.position.y)
             {
-                if ((GameObject.FindGameObjectWithTag("Ruin").transform.position.x - this.transform.position.x) <= detectarRuina &&
-                (this.transform.position.y - GameObject.FindGameObjectWithTag("Ruin").transform.position.y) <= detectarRuina)
+                if ((GameObject.Find("E_RUINS_1").transform.position.x - this.transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_1").transform.position.y) <= detectRuin)
                 {
                     Build = true;
                 }
             }
-            else if ((GameObject.FindGameObjectWithTag("Ruin").transform.position.x - this.transform.position.x) <= detectarRuina &&
-              (GameObject.FindGameObjectWithTag("Ruin").transform.position.y - this.transform.position.y) <= detectarRuina)
+            else if ((GameObject.Find("E_RUINS_1").transform.position.x - this.transform.position.x) <= detectRuin &&
+              (GameObject.Find("E_RUINS_1").transform.position.y - this.transform.position.y) <= detectRuin)
             {
                 Build = true;
             }
         }
         if (Build)
         {
-            GoBuild();
+            transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.Find("E_RUINS_1").transform.position, 0.1f);
         }
         else
         {
-            
-            GoWhitMatrioshka();
-            Build = false;
+            if (this.CompareTag("BLUE_Trovo"))
+            {
+                DetectRuinBlue2();
+            }
+            else
+            {
+                DetectRuinRed2();
+            }
         }
+        Build = false;
+    }
+
+
+    void DetectRuinBlue2()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinBlue[1])
+        {
+            DetectRuin2();
+        }
+        else
+        {
+            DetectRuin3();
+        }
+
+    }
+    void DetectRuinRed2()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinRed[1])
+        {
+            DetectRuin2();
+        }
+        else
+        {
+            DetectRuin3();
+        }
+
+    }
+    void DetectRuin2()
+    {
+        if (this.transform.position.x >= GameObject.Find("E_RUINS_2").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_2").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.Find("E_RUINS_2").transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_2").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((this.transform.position.x - GameObject.Find("E_RUINS_2").transform.position.x) <= detectRuin &&
+               (GameObject.Find("E_RUINS_2").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        else
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_2").transform.position.y)
+            {
+                if ((GameObject.Find("E_RUINS_2").transform.position.x - this.transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_2").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((GameObject.Find("E_RUINS_2").transform.position.x - this.transform.position.x) <= detectRuin &&
+              (GameObject.Find("E_RUINS_2").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        if (Build)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.Find("E_RUINS_2").transform.position, 0.1f);
+        }
+        else
+        {
+            if (this.CompareTag("BLUE_Trovo"))
+            {
+                DetectRuinBlue3();
+            }
+            else
+            {
+                DetectRuinRed3();
+            }
+        }
+        Build = false;
+    }
+    void DetectRuinBlue3()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinBlue[2])
+        {
+            DetectRuin3();
+        }
+
+    }
+    void DetectRuinRed3()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinRed[2])
+        {
+            DetectRuin3();
+        }
+
+    }
+    void DetectRuin3()
+    {
+        if (this.transform.position.x >= GameObject.Find("E_RUINS_3").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_3").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.Find("E_RUINS_3").transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_3").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((this.transform.position.x - GameObject.Find("E_RUINS_3").transform.position.x) <= detectRuin &&
+               (GameObject.Find("E_RUINS_3").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        else
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_3").transform.position.y)
+            {
+                if ((GameObject.Find("E_RUINS_3").transform.position.x - this.transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_3").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((GameObject.Find("E_RUINS_3").transform.position.x - this.transform.position.x) <= detectRuin &&
+              (GameObject.Find("E_RUINS_3").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        if (Build)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.Find("E_RUINS_3").transform.position, 0.1f);
+        }
+        else
+        {
+            if (this.CompareTag("BLUE_Trovo"))
+            {
+                DetectRuinBlue4();
+            }
+            else
+            {
+                DetectRuinRed4();
+            }
+        }
+        Build = false;
+    }
+    void DetectRuinBlue4()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinBlue[3])
+        {
+            DetectRuin4();
+        }
+        else
+        {
+            DetectRuin4();
+        }
+
+    }
+    void DetectRuinRed4()
+    {
+        if (!GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>().colorRuinRed[3])
+        {
+            DetectRuin4();
+        }
+        else
+        {
+            DetectRuin4();
+        }
+
+    }
+    void DetectRuin4()
+    {
+        if (this.transform.position.x >= GameObject.Find("E_RUINS_4").transform.position.x)
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_4").transform.position.y)
+            {
+
+                if ((this.transform.position.x - GameObject.Find("E_RUINS_4").transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_4").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((this.transform.position.x - GameObject.Find("E_RUINS_4").transform.position.x) <= detectRuin &&
+               (GameObject.Find("E_RUINS_4").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        else
+        {
+            if (this.transform.position.y >= GameObject.Find("E_RUINS_4").transform.position.y)
+            {
+                if ((GameObject.Find("E_RUINS_4").transform.position.x - this.transform.position.x) <= detectRuin &&
+                (this.transform.position.y - GameObject.Find("E_RUINS_4").transform.position.y) <= detectRuin)
+                {
+                    Build = true;
+                }
+            }
+            else if ((GameObject.Find("E_RUINS_4").transform.position.x - this.transform.position.x) <= detectRuin &&
+              (GameObject.Find("E_RUINS_4").transform.position.y - this.transform.position.y) <= detectRuin)
+            {
+                Build = true;
+            }
+        }
+        if (Build)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+            GameObject.Find("E_RUINS_4").transform.position, 0.1f);
+        }
+        else
+        {
+            GoWhitMatrioshka();
+        }
+        Build = false;
     }
 
     void GoWhitMatrioshka()
     {
         if (this.CompareTag("BLUE_Trovo"))
         {
-            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x)
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
-                {
-                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) >= detectarMatrioskaAliada &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) >= detectarMatrioskaAliada)
-                    {
-                        transform.position = Vector3.MoveTowards(transform.position,
+            transform.position = Vector3.MoveTowards(transform.position,
                 GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
-                    }
-                }
-                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x) >= detectarMatrioskaAliada &&
-                   (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
-                }
-            }
-            else
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y)
-                {
-                    if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y) >= detectarMatrioskaAliada)
-                    {
-                        transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
-                    }
-                }
-                else if ((GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
-                  (GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("Matrioshkablue").transform.position, 0.1f);
-                }
-            }
         }
         else
         {
-            if (this.transform.position.x >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x)
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y)
-                {
-                    if ((this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x) >= detectarMatrioskaAliada &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y) >= detectarMatrioskaAliada)
-                    {
-                        transform.position = Vector3.MoveTowards(transform.position,
+            transform.position = Vector3.MoveTowards(transform.position,
                 GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
-                    }
-                }
-                else if ((this.transform.position.x - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x) >= detectarMatrioskaAliada &&
-                   (GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
-                }
-            }
-            else
-            {
-                if (this.transform.position.y >= GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y)
-                {
-                    if ((GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
-                    (this.transform.position.y - GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y) >= detectarMatrioskaAliada)
-                    {
-                        transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
-                    }
-                }
-                else if ((GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.x - this.transform.position.x) >= detectarMatrioskaAliada &&
-                  (GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position.y - this.transform.position.y) >= detectarMatrioskaAliada)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position,
-                GameObject.FindGameObjectWithTag("MatrioshkaRed").transform.position, 0.1f);
-                }
-            }
         }
 
     }
 
-    void GoBuild()
-    {
-        transform.position = Vector3.MoveTowards(transform.position,
-            GameObject.FindGameObjectWithTag("Ruin").transform.position, 0.1f);
-    }
 }

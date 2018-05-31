@@ -17,5 +17,35 @@ public class Variables : MonoBehaviour {
     public Vector3 detectarMatrioskaAliadaV3 = new Vector3(1, 1, 1);
     //Variables bool que dicen qual esta seleccionado o no;
     public bool boolMatrio = false, boolTrovo = false, boolBabus = false, boolRuin = false;
-    
+    //Variables para saber el color de la ruina, true = si es de un color, false = neutro
+    int countRed;
+    public bool[] colorRuinRed = new bool[4];
+    int countBlue;
+    public bool[] colorRuinBlue = new bool[4];
+
+    void Update()
+    {
+        CountRuins();
+    }
+
+    void CountRuins()
+    {
+        countRed = 0;
+        countBlue = 0;
+        for(int i = 0; i!=4; i++)
+        {
+            if (colorRuinRed[i])
+            {
+                countRed++;
+            }
+
+            if (colorRuinBlue[i])
+            {
+                countBlue++;
+            }
+        }
+        maxBabuskaBlue = 10 + (countBlue * 2);
+        maxBabuskaRed = 10 + (countRed * 2);
+    }
+
 }
