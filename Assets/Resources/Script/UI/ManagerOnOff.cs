@@ -11,23 +11,22 @@ public class ManagerOnOff : MonoBehaviour
 
     private int select = -1;
 
-    private static string[] tag_units;
     private static string[] tag_highlight;
     private Variables variables;
-    private Sprite[] imagenes;
+    private Sprite[] images;
 
     private void Start()
     {
         variables = GameObject.FindGameObjectWithTag("variables").GetComponent<Variables>();
-        tag_units = variables.tag_units;
         tag_highlight = variables.tag_highlight;
-        imagenes = variables.highlight_sprite;
+        images = variables.highlight_sprite;
 
     }
 
     public void OnOff()
     {
         Focus();
+
         if (but.image.sprite == OnSprite)
         {
             but.image.sprite = OffSprite;
@@ -39,18 +38,17 @@ public class ManagerOnOff : MonoBehaviour
         {
             but.image.sprite = OnSprite;
             var light = GameObject.FindGameObjectsWithTag(tag_highlight[select]);
-            foreach (GameObject l in light) l.GetComponent<SpriteRenderer>().sprite = imagenes[select];
+            foreach (GameObject l in light) l.GetComponent<SpriteRenderer>().sprite = images[select];
         }
-
     }
 
     public void Off()
     {
         Focus();
         but.image.sprite = OffSprite;
-        but.image.sprite = OnSprite;
         var light = GameObject.FindGameObjectsWithTag(tag_highlight[select]);
-        foreach (GameObject l in light) l.GetComponent<SpriteRenderer>().sprite = imagenes[select];
+        foreach (GameObject l in light) l.GetComponent<SpriteRenderer>().sprite = null;
+
     }
 
     void Focus()
