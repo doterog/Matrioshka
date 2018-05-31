@@ -16,6 +16,9 @@ TagManager:
   - RED_Matrioshka
   - L_Trovo
   - L_Babuska
+  - BT_Matrioshka
+  - BT_Babuska
+  - BT_Trovo
   layers:
   - Default
   - TransparentFX
